@@ -28,7 +28,7 @@ void main() {
 }
 
 void mostrarMenu() {
-    printf("\nBlackjack\n");
+    printf("\n21 Blackjack\n");
     printf("\n 1. Generar pila de cartas");
     printf("\n 2. Jugar");
     printf("\n 3. Mostrar estadisticas");
