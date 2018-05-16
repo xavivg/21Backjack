@@ -5,13 +5,13 @@
 #include <string.h>
 
 typedef struct {
-    char nombre;
+    char *nombre;
     int fichas;
     int manos_ganadas;
     int manos_perdidas;
-    int *fichas_partida;
+    //int fichas_partida;
 } Jugador;
 
 Jugador JUGADOR_crea();
 
-#endif
+#endif //INC_21BLACKJACK_JUGADOR_H

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "baraja.h"
-
+#include "gestionFicheros.h"
 
 void mostrarMenu() {
     printf("\n21 Blackjack\n");
@@ -11,6 +11,7 @@ void mostrarMenu() {
 }
 void main() {
 
+    cargaJugador();
     int opcio = 0;int numero = 0; Baraja b;
     while (opcio != 4) {
 

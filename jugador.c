@@ -5,6 +5,6 @@ Jugador JUGADOR_crea() {
     return j;
 }
 
-void JUGADOR_elimina(Jugador j) {
+/*void JUGADOR_elimina(Jugador j) {
     free(j);
-}
+}*/
