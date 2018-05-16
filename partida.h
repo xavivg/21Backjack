@@ -1,0 +1,8 @@
+//
+// Created by xaviv on 15/05/2018.
+//
+
+#ifndef INC_21BACKJACK_PARTIDA_H
+#define INC_21BACKJACK_PARTIDA_H
+
+#endif //INC_21BACKJACK_PARTIDA_H
