@@ -1,10 +1,10 @@
 #include "jugador.h"
 
-typedef struct
-{
-    char *nombre;
-    char *poblacion;
-    int dias;
-    int dia;
-    int mes;
-} Fiesta;
+Jugador JUGADOR_crea() {
+    Jugador j;
+    return j;
+}
+
+void JUGADOR_elimina(Jugador j) {
+    free(j);
+}
