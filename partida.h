@@ -14,5 +14,5 @@ typedef struct {
 }Partida;
 
 Partida PARTIDA_crea(Baraja b);
-void PARTIDA_addCarta(ListaCarta *cartas, Baraja *b);
+void PARTIDA_addCarta(Partida *p, Baraja *b);
 #endif //INC_21BACKJACK_PARTIDA_H

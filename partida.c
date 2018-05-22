@@ -2,6 +2,7 @@
 #include "partida.h"
 #include "baraja.h"
 #include "listaCarta.h"
+#include "crupier.h"
 
 Partida PARTIDA_crea(Baraja b){
     Partida p;
@@ -11,8 +12,4 @@ Partida PARTIDA_crea(Baraja b){
     p.baraja = b;
     return p;
 }
-void PARTIDA_addCarta(ListaCarta *cartas, Baraja *b){
-    char carta  = BARAJA_carta(b);
 
-    *cartas = LISTACARTA_inserta(*cartas, carta);
-}
