@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "listaFichas.h"
+#include "listaCarta.h"
 
 typedef struct {
     char *nombre;
@@ -12,6 +13,7 @@ typedef struct {
     int manos_perdidas;
     int manos_empatadas;
     ListaFichas fichas_partida;
+    ListaCarta cartas;
 } Jugador;
 
 Jugador JUGADOR_crea();

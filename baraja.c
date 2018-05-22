@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <time.h>
 #include "baraja.h"
 
 Baraja BARAJA_crea(int numero){
@@ -9,6 +10,7 @@ Baraja BARAJA_crea(int numero){
     b.cartas[total];//array de cartas totales segun la baraja
     b.nCartas = 0;
         //fer un bucle segons el numero de barajas que volen crear la pila
+    srand(time(NULL));
         for(int j=0;j<total;j++){
 
              r =  rand() % 13;
@@ -27,4 +29,14 @@ void BARAJA_push(Baraja *b, char carta){//agregacion de carta a la pila baraja
          printf("%c ", (*b).cartas[b->nCartas]);// si no es fa el printf aqui, surten caracters raros
         (*b).nCartas++;
 
+}
+//Stuff
+void BARAJA_destruye(Baraja *b){
+    b->nCartas = 0;
+    free(b->cartas);
+}
+char BARAJA_carta(Baraja *b){
+    char carta = b->cartas[b->nCartas-1];
+    b->nCartas--;
+    return carta;
 }
