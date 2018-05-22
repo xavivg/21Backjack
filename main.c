@@ -9,7 +9,7 @@ void mostrarMenu() {
     printf("\n 3. Mostrar estadisticas");
     printf("\n 4. Salir\n");
 }
-void main() {
+int main() {
 
     cargaJugador();
     int opcio = 0;int numero = 0; Baraja b;
@@ -39,4 +39,6 @@ void main() {
                 break;
         }
     }
+
+    return 0;
 }
