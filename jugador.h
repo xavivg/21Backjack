@@ -3,15 +3,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "listaCarta.h"
 
 typedef struct {
-    char nombre;
+    char *nombre;
     int fichas;
     int manos_ganadas;
     int manos_perdidas;
     int *fichas_partida;
+    ListaCarta cartas;
 } Jugador;
 
 Jugador JUGADOR_crea();
 
-#endif
+#endif //INC_21BACKJACK_JUGADOR_H
