@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "listaFichas.h"
 #include "listaCarta.h"
+#include "listaFichas.h"
 
 typedef struct {
     char *nombre;

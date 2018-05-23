@@ -4,14 +4,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct N {
+typedef struct A {
     int elemento;
-    struct N *sig;
-}Nodo;
+    struct A *sig;
+}Node;
 
 typedef struct {
-    Nodo *pri;
-    Nodo *ant;
+    Node *pri;
+    Node *ant;
 }ListaFichas;
 
 

@@ -1,8 +1,5 @@
-#include <stdio.h>
+
 #include "partida.h"
-#include "baraja.h"
-#include "listaCarta.h"
-#include "crupier.h"
 
 Partida PARTIDA_crea(Baraja b){
     Partida p;

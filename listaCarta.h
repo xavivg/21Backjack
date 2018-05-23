@@ -1,7 +1,3 @@
-//
-// Created by xaviv on 16/05/2018.
-//
-
 #ifndef INC_21BACKJACK_LISTACARTA_H
 #define INC_21BACKJACK_LISTACARTA_H
 #include <stdio.h>

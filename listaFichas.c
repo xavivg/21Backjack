@@ -3,7 +3,7 @@
 ListaFichas LISTAFICHAS_crea() {
     ListaFichas l;
 
-    l.pri = (Nodo*)malloc(sizeof(Nodo));
+    l.pri = (Node*)malloc(sizeof(Node));
     if (l.pri == NULL) {
         printf("\nError al crear la lista...\n");
     } else {
@@ -16,9 +16,9 @@ ListaFichas LISTAFICHAS_crea() {
 }
 
 ListaFichas LISTAFICHAS_inserta(ListaFichas l, int elemento) {
-    Nodo *aux;
+    Node *aux;
 
-    aux = (Nodo*)malloc(sizeof(Nodo));
+    aux = (Node*)malloc(sizeof(Node));
     if (aux == NULL) {
         printf("\nError al insertar en la lista...\n");
     } else {
@@ -31,7 +31,7 @@ ListaFichas LISTAFICHAS_inserta(ListaFichas l, int elemento) {
 }
 
 ListaFichas LISTAFICHAS_elimina(ListaFichas l) {
-    Nodo *aux;
+    Node *aux;
 
     if (l.ant->sig == NULL) {
         printf("\nError al eliminar, el PDI está al final...\n");
@@ -78,7 +78,7 @@ int LISTAFICHAS_vacia(ListaFichas l) {
 }
 
 ListaFichas LISTAFICHAS_destruye(ListaFichas l) {
-    Nodo *aux;
+    Node *aux;
 
     while (l.pri!=NULL) {
         aux = l.pri;

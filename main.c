@@ -38,7 +38,7 @@ void main() {
                     /*printf("Pulsa enter para continuar...\n");
                     while (enter != '\r' && enter != '\n') { enter = getchar(); }  */
                 }else{
-                    blackjack(b);
+                  //  blackjack(b);
                 }
                 break;
             case 3:
