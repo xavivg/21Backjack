@@ -14,6 +14,60 @@ Jugador JUGADOR_crea() {
     return j;
 }
 
+void JUGADOR_insertaNombre(Jugador *j, char *nombre) {
+    (*j).nombre = nombre;
+}
+
+void JUGADOR_insertaFichas(Jugador *j, int fichas) {
+    (*j).fichas = fichas;
+}
+
+void JUGADOR_insertaManosGanadas(Jugador *j, int manosGanadas) {
+    (*j).manos_ganadas = manosGanadas;
+}
+
+void JUGADOR_insertaManosPerdidas(Jugador *j, int manosPerdidas) {
+    (*j).manos_perdidas = manosPerdidas;
+}
+
+void JUGADOR_insertaManosEmpatadas(Jugador *j, int manosEmpatadas) {
+    (*j).manos_empatadas = manosEmpatadas;
+}
+
+void JUGADOR_insertaFichasPartida(Jugador *j, int fichasPartida) {
+    (*j).fichas_partida = LISTAFICHAS_inserta((*j).fichas_partida, fichasPartida);
+    (*j).fichas_partida = LISTAFICHAS_avanza((*j).fichas_partida);
+}
+
+char * JUGADOR_consultaNombre(Jugador j) {
+    return j.nombre;
+}
+
+int JUGADOR_consultaFichas(Jugador j) {
+    return j.fichas;
+}
+
+int JUGADOR_consultaManosGanadas(Jugador j) {
+    return j.manos_ganadas;
+}
+
+int JUGADOR_consultaManosPerdidas(Jugador j) {
+    return j.manos_perdidas;
+}
+
+int JUGADOR_consultaManosEmpatadas(Jugador j) {
+    return j.manos_empatadas;
+}
+
+int JUGADOR_consultaFichasPartida(Jugador j, int numPartida) {
+    j.fichas_partida = LISTAFICHAS_vesInicio(j.fichas_partida);
+    for (int i = 0; i < numPartida; i++) {
+        j.fichas_partida = LISTAFICHAS_avanza(j.fichas_partida);
+    }
+    int fichas = LISTAFICHAS_consulta(j.fichas_partida);
+    return fichas;
+}
+
 /*void JUGADOR_elimina(Jugador j) {
     free(j);
 }*/
