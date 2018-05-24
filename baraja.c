@@ -31,6 +31,13 @@ void BARAJA_push(Baraja *b, char carta){//agregacion de carta a la pila baraja
 
 }
 //Stuff
+int BARAJA_numeroCartas(Baraja b){
+    return b.nCartas;
+}
+
+
+
+//end of stuff
 void BARAJA_destruye(Baraja *b){
     b->nCartas = 0;
     free(b->cartas);

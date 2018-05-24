@@ -11,18 +11,14 @@
 #include "listaCarta.h"
 
 typedef struct {
-    int nBots;
     char nombre;
     int fichas;
     char caracter;
     int carta_maxima;
-    int manos_ganadas;
-    int manos_perdidas;
-    int *fichas_partida;
     ListaCarta cartas;
-} Bots;
+} *Bots;
 
-Bots BOTS_crea();
+Bots * BOTS_crea();
 
 
 #endif //INC_21BLACKJACK_BOTS_H

@@ -11,9 +11,15 @@ typedef struct {
     Jugador jugador;
     Crupier crupier;
     Baraja baraja;
-    Bots bots;
+    int nBots;
+    Bots *bots;
 }Partida;
 
 Partida PARTIDA_crea(Baraja b);
-void PARTIDA_addCarta(Partida *p, Baraja *b);
+char PARTIDA_add_carta_crupier(Partida *p);
+void PARTIDA_show_carta_crupier(Partida *p, int t);// si t = 0; nomes mostra 1 carta, si t es 1, es mostren totes
+char PARTIDA_add_carta_jugador(Partida *p);
+void PARTIDA_show_carta_jugador(Partida *p, int t);// si t = 0; nomes mostra 1 carta, si t es 1, es mostren totes
+void PARTIDA_apuesta_jugador(Partida *p);
+void PARTIDA_accion_jugador();
 #endif //INC_21BACKJACK_PARTIDA_H

@@ -16,6 +16,7 @@ void BARAJA_push(Baraja *b, char carta);
 //void BARAJA_pop(Baraja *p);
 //void BARAJA_top(Baraja p);
 //int BARAJA_vacia(Baraja p);
+int BARAJA_numeroCartas(Baraja b);
 void BARAJA_destruye(Baraja *b);
 char BARAJA_carta(Baraja *b);
 

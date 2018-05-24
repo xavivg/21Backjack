@@ -1,6 +1,6 @@
 #include "bots.h"
 
-Bots BOTS_crea() {
-    Bots c;
-    return c;
+Bots * BOTS_crea() {
+    Bots b;
+    return b;
 }
