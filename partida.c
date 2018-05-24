@@ -53,9 +53,69 @@ void PARTIDA_show_carta_jugador(Partida *p, int t){
             printf(" [%c] ", carta);
             (*p).jugador.cartas = LISTACARTA_avanza((*p).jugador.cartas);
         }
+        printf(" \n                 (%d)\n",PARTIDA_conversor(p));
         printf("\n");
     }
 
+}
+int PARTIDA_equivalencia(char carta, int vtotal){
+    int valor = 0;
+    if(carta == '1'){
+        valor = 1;
+    }
+    else if(carta == '2'){
+        valor = 2;
+    }
+    else if(carta == '3'){
+        valor = 3;
+    }
+    else if(carta == '4'){
+        valor = 4;
+    }
+    else if(carta == '5'){
+        valor = 5;
+    }
+    else if(carta == '6'){
+        valor = 6;
+    }
+    else if(carta == '7'){
+        valor = 7;
+    }
+    else if(carta == '8'){
+        valor = 8;
+    }
+    else if(carta == '9'){
+        valor = 9;
+    }
+    else if(carta == '0'){
+        valor = 10;
+    }
+    else if(carta == 'J'){
+        valor = 10;
+    }
+    else if(carta == 'Q'){
+        valor = 10;
+    }
+    else if(carta == 'K'){
+        valor = 10;
+    }
+    else if(carta == 'A'){
+        if(vtotal<21) {
+            valor = 1;
+        }else{
+            valor = 10;
+        }
+    }
+    return valor;
+}
+int PARTIDA_conversor(Partida *p){
+    int vtotal = 0;//valor total integer de las cartas
+    (*p).jugador.cartas = LISTACARTA_vesInicio((*p).jugador.cartas);
+    while(!LISTACARTA_final((*p).jugador.cartas)){
+        vtotal = PARTIDA_equivalencia((LISTACARTA_consulta((*p).jugador.cartas)),vtotal) + vtotal;
+        (*p).jugador.cartas = LISTACARTA_avanza((*p).jugador.cartas);
+    }
+    return vtotal;
 }
 void PARTIDA_apuesta_jugador(Partida *p){
     int apuesta = 0;
@@ -65,6 +125,7 @@ void PARTIDA_apuesta_jugador(Partida *p){
     (*p).jugador.fichas = (*p).jugador.fichas - apuesta;
     printf("\n te quedan: %d\n",(*p).jugador.fichas);
 }
+
 //stuff bots
 
 

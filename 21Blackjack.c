@@ -30,10 +30,10 @@ void blackjack(Baraja b) {
             carta = PARTIDA_add_carta_jugador(&p);
         }
         PARTIDA_show_carta_crupier(&p, 0);
-        PARTIDA_show_carta_jugador(&p, 0);
+        PARTIDA_show_carta_jugador(&p, 1);
         //Partida_carta_jugador
         //cartas repartidas, primeras apuestas
-        PARTIDA_apuesta_jugador(&p);
+        PARTIDA_conversor(&p);
         //apuestas realizadas, evaluacion
         printf("--------------------------------------");
         while (opcio != 4) {
@@ -45,6 +45,12 @@ void blackjack(Baraja b) {
                 case 1:
                     PARTIDA_add_carta_jugador(&p);
                     PARTIDA_show_carta_jugador(&p, 1);
+                    break;
+                case 2:
+                    //pasa turno a crupier
+                    break;
+                case 3:
+                    //pasa turno a crupier
                     break;
             }
         }
