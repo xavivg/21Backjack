@@ -6,7 +6,9 @@
 #include <string.h>
 #include "jugador.h"
 #include "listaFichas.h"
+#include "bots.h"
 
-void cargaJugador();
+Jugador cargaJugador();
+Bots * cargaBots();
 
 #endif //INC_21BLACKJACK_GESTIONFICHEROS_H

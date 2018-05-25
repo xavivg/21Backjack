@@ -12,7 +12,7 @@ typedef struct {
     Crupier crupier;
     Baraja baraja;
     int nBots;
-    Bots *bots;
+    Bots bots;
 }Partida;
 
 Partida PARTIDA_crea(Baraja b);
