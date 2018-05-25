@@ -30,4 +30,9 @@ int JUGADOR_consultaManosPerdidas(Jugador j);
 int JUGADOR_consultaManosEmpatadas(Jugador j);
 int JUGADOR_consultaFichasPartida(Jugador j, int numPartida);
 
+void * JUGADOR_add_carta(Jugador *jugador, char carta);
+ListaCarta JUGADOR_get_cartas(Jugador *jugador);
+int JUGADOR_get_fichas(Jugador *jugador);
+int JUGADOR_set_fichas(Jugador *jugador, int fichas);
+ListaFichas JUGADOR_get_fichasPartida(Jugador *jugador);
 #endif //INC_21BLACKJACK_JUGADOR_H

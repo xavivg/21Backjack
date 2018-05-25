@@ -14,15 +14,14 @@ void blackjack(Baraja b) {
     int game = 0;char carta ;int i = 0;int opcio = 0;
     Partida p = PARTIDA_crea(b);
 
-    printf("%d", BARAJA_numeroCartas(b));
     //llegir arxiu del jugador
     //legir arxiu dels bots
     while (game != -1) {
-        printf("- Crupier\n");
+        printf("\n- Crupier\n");
      /*   for(int i = 0; i<p.bots.nBots;i++){
             printf("\n- %c\n",p.bots.nombre);
         }*/
-        printf("\n21Blackjack - Jugar");
+        printf("\n21Blackjack - Jugar\n");
 
         //Partida_carta_bots();
         for(i=0;i<2;i++){
@@ -33,7 +32,7 @@ void blackjack(Baraja b) {
         PARTIDA_show_carta_jugador(&p, 1);
         //Partida_carta_jugador
         //cartas repartidas, primeras apuestas
-        PARTIDA_conversor(&p);
+       int apuestaJ =  PARTIDA_apuesta_jugador(&p);
         //apuestas realizadas, evaluacion
         printf("--------------------------------------");
         while (opcio != 4) {
@@ -48,9 +47,18 @@ void blackjack(Baraja b) {
                     break;
                 case 2:
                     //pasa turno a crupier
+                    printf("Pepito se planta!");//get nombre jugador de plantilla
+                    apuestaJ = 0;
+                    opcio = 4;
                     break;
                 case 3:
-                    //pasa turno a crupier
+                    //Rendirse
+                    break;
+                case 4:
+                    printf("Paquito se rinde!!");
+                    break;
+                default:
+                    printf("Debes escoger una de las opciones!");
                     break;
             }
         }
