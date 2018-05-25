@@ -47,7 +47,7 @@ void PARTIDA_show_carta_jugador(Partida *p, int t){
     printf("\nJugador  ");
     if(t == 0){
         carta = LISTACARTA_consulta(cartas);
-        fichas = JUGADOR_get_fichas(&(*p).jugador);
+        fichas = JUGADOR_consultaFichas((*p).jugador);
         printf(" [%c]  [X] %dfch\n", carta, fichas);//oju
     }
     else{
@@ -122,7 +122,7 @@ int PARTIDA_conversor(Partida *p){
     return vtotal;
 }
 int PARTIDA_apuesta_jugador(Partida *p){
-    int apuesta = 0;int fichas = JUGADOR_get_fichas(&(*p).jugador);
+    int apuesta = 0;int fichas = JUGADOR_consultaFichas((*p).jugador);
     printf("\nPepito, haz tu apuesta:");
     scanf("%d", &apuesta);
     while(apuesta>fichas) {
@@ -130,8 +130,8 @@ int PARTIDA_apuesta_jugador(Partida *p){
         scanf("%d", &apuesta);
     }
     //Al final de cada partida, se guarda en listafichas el numero de fichas que tiene el jugador en ese momento
-    fichas =  JUGADOR_set_fichas(&(*p).jugador, fichas);
-    printf("\n te quedan: %d\n",fichas);
+    JUGADOR_insertaFichas(&(*p).jugador, fichas);
+
     return apuesta;
 }
 

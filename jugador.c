@@ -20,6 +20,7 @@ void JUGADOR_insertaNombre(Jugador *j, char *nombre) {
 
 void JUGADOR_insertaFichas(Jugador *j, int fichas) {
     (*j).fichas = fichas;
+    printf("\n te quedan: %d\n",fichas);
 }
 
 void JUGADOR_insertaManosGanadas(Jugador *j, int manosGanadas) {
@@ -68,6 +69,12 @@ int JUGADOR_consultaFichasPartida(Jugador j, int numPartida) {
     return fichas;
 }
 
+void * JUGADOR_add_carta(Jugador *jugador, char carta){
+    jugador->cartas = LISTACARTA_inserta(jugador->cartas, carta);
+}
+ListaCarta JUGADOR_get_cartas(Jugador *jugador){
+    return jugador->cartas;
+}
 /*void JUGADOR_elimina(Jugador j) {
     free(j);
 }*/
