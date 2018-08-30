@@ -15,7 +15,7 @@ typedef struct {
     Bot *arrayBots;
 }Partida;
 
-Partida PARTIDA_crea(Baraja b, Bot *arrayBOT);
+Partida PARTIDA_crea(Baraja b);
 char PARTIDA_add_carta_crupier(Partida *p);
 void PARTIDA_show_carta_crupier(Partida *p, int t);// si t = 0; nomes mostra 1 carta, si t es 1, es mostren totes
 char PARTIDA_add_carta_jugador(Partida *p);

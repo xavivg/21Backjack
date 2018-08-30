@@ -5,12 +5,14 @@
 #include "bots.h"
 #include "gestionFicheros.h"
 
-Partida PARTIDA_crea(Baraja b, Bot *arrayBots){
+Partida PARTIDA_crea(Baraja b){
     Partida p;
     p.jugador = JUGADOR_crea();
     p.crupier = CRUPIER_crea();
     p.nBots = BOT_numBots();
-    BOT_crea(arrayBots);
+    // Crea en memoria
+    // BOT_crea(arrayBOT);
+    p.arrayBots = BOT_crea(p.nBots);
     p.baraja = b;
     return p;
 }

@@ -18,7 +18,7 @@ typedef struct {
     ListaCarta cartas;
 } Bot;
 
-void BOT_crea(Bot *arrayBOT);
+Bot * BOT_crea(int nBots);
 int BOT_numBots();
 void BOT_insertaNombre(Bot *b, char *nombre);
 void BOT_insertaFichas(Bot *b, int fichas);

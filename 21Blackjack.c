@@ -14,9 +14,10 @@ void blackjack(Baraja b) {
 
     while (game != -1) {
         int nBots = BOT_numBots();
-        Bot *arrayBots;
-        arrayBots = malloc( nBots * sizeof(Bot));
-        Partida p = PARTIDA_crea(b, &arrayBots);
+        Bot *arrayBOT[nBots];
+        //arrayBots = malloc( nBots * sizeof(Bot));
+        Partida p = PARTIDA_crea(b);
+        p.arrayBots = *arrayBOT;
         printf("\n- Crupier\n");
         printf("\n- %s\n", p.jugador.nombre);
         printf("\n Num bots = %d",nBots);

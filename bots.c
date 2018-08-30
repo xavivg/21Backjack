@@ -1,9 +1,14 @@
 #include "bots.h"
 
-void BOT_crea(Bot *arrayBOT) {
+Bot * BOT_crea(nBots) {
+    Bot arrayBOT[nBots];
    /* BOT b;
     return b; */
-    int fichas;  char car; char *nombre = malloc(sizeof(char) * 1024); char *caracter = malloc(sizeof(char) * 1024);int cartaMax;
+    int fichas;
+    char car;
+    char *caracter = malloc(sizeof(char) * 1024);
+    int cartaMax;
+
         FILE *f;
         f = fopen("fichero_bots.bj", "r");
 
@@ -12,14 +17,14 @@ void BOT_crea(Bot *arrayBOT) {
         } else {
             int numBOT = 0; int i= 0;
             numBOT = fscanf(f, "%i", &numBOT);
-            for (i =0; i<=numBOT; i++){
+            for (i = 0; i<=numBOT; i++){
                 while (!feof(f)) {
                     char *nombre = malloc(sizeof(char) * 1024);
                     fgets(nombre, 25, f);
-                    arrayBOT[i].nombre = nombre;
+                     arrayBOT[i].nombre = "asdfasdf";
 
                     fscanf(f, "%d", &fichas);
-                    arrayBOT[i].fichas = fichas;
+                     arrayBOT[i].fichas = fichas;
 
                     fscanf(f, "%s", caracter);
                     if (strcmp(caracter, "Fuerte") == 0) {
@@ -29,58 +34,16 @@ void BOT_crea(Bot *arrayBOT) {
                     } else if (strcmp(caracter, "Normal") == 0) {
                         car = 'n';
                     }
-                    arrayBOT[i].caracter = car;
+                     // arrayBOT[i].caracter = car;
 
                     fscanf(f, "%d", &cartaMax);
-                    arrayBOT[i].carta_maxima = cartaMax;
+                    // arrayBOT[i].carta_maxima = cartaMax;
                     i++;
                 }
             }
-/*
-
-            fscanf(f, "%d", &numBOT);
-            Bot BOT[numBOT];
-
-            char aux;
-            fscanf(f, "%c", &aux);
-
-            char *nombre = malloc(sizeof(char) * 1024);
-            fgets(nombre, 25, f);
-            strtok(nombre, "\n");
-            BOT[i]->nombre;
-
-            while (!feof(f)) {
-                int fichas;
-                fscanf(f, "%d", &fichas);
-                BOT[i]->fichas = fichas;
-
-                char *caracter = malloc(sizeof(char) * 1024);
-                char car;
-                fscanf(f, "%s", caracter);
-                if (strcmp(caracter, "Fuerte") == 0) {
-                    car = 'f';
-                } else if (strcmp(caracter, "Debil") == 0) {
-                    car = 'd';
-                } else if (strcmp(caracter, "Normal") == 0) {
-                    car = 'n';
-                }
-                BOT[i]->caracter = car;
-
-
-                int cartaMax;
-                fscanf(f, "%d", &cartaMax);
-                BOT[i]->carta_maxima = cartaMax;
-                i++;
-
-                fscanf(f, "%c", &aux);
-                nombre = malloc(sizeof(char) * 1024);
-                fgets(nombre, 25, f);
-                strtok(nombre, "\n");
-               BOT[i]->nombre = nombre;
-            }
-            */
-
         }
+
+        return arrayBOT;
 
         fclose(f);
 }
@@ -93,7 +56,7 @@ int BOT_numBots(){
     if (fi==NULL){
         printf("Error al llegir l'arxiu.");
     }else{
-        fscanf(fi, "%i", &numBOT);
+        fscanf(fi, "%d", &numBOT);
         fclose(fi);
     }
 
