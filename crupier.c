@@ -2,8 +2,8 @@
 
 Crupier CRUPIER_crea() {
     Crupier c;
-    c.cartas = LISTACARTA_crea();
-    c.cartas = LISTACARTA_vesInicio(c.cartas);
+    ListaCarta x  = LISTACARTA_crea();
+    c.cartas = x;
     return c;
 }
 void * CRUPIER_add_carta(Crupier *crupier, char carta){

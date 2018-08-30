@@ -7,6 +7,6 @@
 #include "jugador.h"
 #include "listaFichas.h"
 
-void cargaJugador();
+Jugador cargaJugador();
 
 #endif //INC_21BLACKJACK_GESTIONFICHEROS_H
