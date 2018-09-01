@@ -1,6 +1,7 @@
 #include "bots.h"
+#include "partida.h"
 
-Bot * BOT_crea(nBots) {
+Bot * BOT_crea(int nBots) {
     Bot arrayBOT[nBots];
    /* BOT b;
     return b; */
@@ -8,7 +9,7 @@ Bot * BOT_crea(nBots) {
     char car;
     char *caracter = malloc(sizeof(char) * 1024);
     int cartaMax;
-
+    char *nombre = malloc(sizeof(char) * 1024);
         FILE *f;
         f = fopen("fichero_bots.bj", "r");
 
@@ -16,12 +17,17 @@ Bot * BOT_crea(nBots) {
             printf("\nError en obrir fitxer...\n");
         } else {
             int numBOT = 0; int i= 0;
-            numBOT = fscanf(f, "%i", &numBOT);
-            for (i = 0; i<=numBOT; i++){
+            fscanf(f, "%i", &numBOT);
+
+            char *nombre = malloc(sizeof(char) * 1024);
+
+            char aux;
+            fscanf(f, "%c", &aux);
+            fgets(nombre, 25, f);
+            strtok(nombre, "\n");
+            arrayBOT[0].nombre = nombre;
+            for (i = 0; i<numBOT; i++){
                 while (!feof(f)) {
-                    char *nombre = malloc(sizeof(char) * 1024);
-                    fgets(nombre, 25, f);
-                     arrayBOT[i].nombre = "asdfasdf";
 
                     fscanf(f, "%d", &fichas);
                      arrayBOT[i].fichas = fichas;
@@ -34,18 +40,21 @@ Bot * BOT_crea(nBots) {
                     } else if (strcmp(caracter, "Normal") == 0) {
                         car = 'n';
                     }
-                     // arrayBOT[i].caracter = car;
+                    arrayBOT[i].caracter = car;
 
                     fscanf(f, "%d", &cartaMax);
-                    // arrayBOT[i].carta_maxima = cartaMax;
+                    arrayBOT[i].carta_maxima = cartaMax;
                     i++;
+                    fscanf(f, "%c", &aux);
+                    nombre = malloc(sizeof(char) * 1024);
+                    fgets(nombre, 25, f);
+                    strtok(nombre, "\n");
+                    arrayBOT[i].nombre = nombre;
                 }
             }
         }
-
-        return arrayBOT;
-
         fclose(f);
+        return arrayBOT;
 }
 int BOT_numBots(){
 

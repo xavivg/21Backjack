@@ -12,6 +12,7 @@ void mostrarMenu() {
     printf("\n 4. Salir\n");
 }
 void main() {
+    setbuf(stdout, 0);
     int opcio = 0;int numero = 0; Baraja b;char enter = 0;
     while (opcio != 4) {
 

@@ -12,8 +12,8 @@ typedef struct {
     Crupier crupier;
     Baraja baraja;
     int nBots;
-    Bot *arrayBots;
-}Partida;
+    Bot *arraybots;
+} Partida;
 
 Partida PARTIDA_crea(Baraja b);
 char PARTIDA_add_carta_crupier(Partida *p);

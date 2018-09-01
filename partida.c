@@ -11,8 +11,8 @@ Partida PARTIDA_crea(Baraja b){
     p.crupier = CRUPIER_crea();
     p.nBots = BOT_numBots();
     // Crea en memoria
-    // BOT_crea(arrayBOT);
-    p.arrayBots = BOT_crea(p.nBots);
+    // BOT_crea(arrayBOT)
+    p.arraybots = BOT_crea(p.nBots);
     p.baraja = b;
     return p;
 }
