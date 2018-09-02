@@ -1,15 +1,14 @@
 #include <stdio.h>
 #include "baraja.h"
-#include "gestionFicheros.h"
 #include "21Blackjack.c"
 
 
 void mostrarMenu() {
     printf("\n21 Blackjack\n");
-    printf("\n 1. Generar pila de cartas");
+    printf("\n 1. Generar pila de cartes");
     printf("\n 2. Jugar");
     printf("\n 3. Mostrar estadisticas");
-    printf("\n 4. Salir\n");
+    printf("\n 4. Sortir\n");
 }
 void main() {
     setbuf(stdout, 0);
@@ -24,17 +23,17 @@ void main() {
         switch (opcio) {
             case 1:
                 //generar pila de cartas function
-                printf("\nDe cuantas barajas deseas crear la pila? \n");
+                printf("\n De quantes baralles vols crear la pila?\n");
                 scanf("%d",&numero);
                 while(numero<1 || numero>4){
-                    printf("\nNumero incorrecto, del 1 al 4 \n");
+                    printf("\nNumero incorrecte, del 1 al 4 \n");
                     scanf("%d",&numero);
                 }
                 b =  BARAJA_crea(numero);
                 break;
             case 2:
                 if(b.cartas[1] == NULL) {
-                    printf(" \n La baraja aun no ha sido creada, no puedes jugar sin crearla primero \n");
+                    printf(" \n La baralla no ha sigut creada, el joc no es pot iniciar. \n");
                     /*printf("Pulsa enter para continuar...\n");
                     while (enter != '\r' && enter != '\n') { enter = getchar(); }  */
                 }else{
@@ -44,11 +43,11 @@ void main() {
             case 3:
                 break;
             case 4:
-                printf(" \n Adios! \n");
+                printf(" \n Adeu!! \n");
                 BARAJA_destruye(&b);
                 break;
             default:
-                printf("\nEsta no es una opcion valida!\n");
+                printf("\nAquesta no es una opcio valida!\n");
                 break;
         }
     }

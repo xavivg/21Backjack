@@ -1,8 +1,8 @@
 #include "bots.h"
 #include "partida.h"
 
-Bot * BOT_crea(int nBots) {
-    Bot arrayBOT[nBots];
+void BOT_crea(Bot *arrayBots) {
+    int nBots = BOT_numBots();
    /* BOT b;
     return b; */
     int fichas;
@@ -25,12 +25,12 @@ Bot * BOT_crea(int nBots) {
             fscanf(f, "%c", &aux);
             fgets(nombre, 25, f);
             strtok(nombre, "\n");
-            arrayBOT[0].nombre = nombre;
+            arrayBots[0].nombre = nombre;
             for (i = 0; i<numBOT; i++){
                 while (!feof(f)) {
 
                     fscanf(f, "%d", &fichas);
-                     arrayBOT[i].fichas = fichas;
+                    arrayBots[i].fichas = fichas;
 
                     fscanf(f, "%s", caracter);
                     if (strcmp(caracter, "Fuerte") == 0) {
@@ -40,21 +40,22 @@ Bot * BOT_crea(int nBots) {
                     } else if (strcmp(caracter, "Normal") == 0) {
                         car = 'n';
                     }
-                    arrayBOT[i].caracter = car;
+                    arrayBots[i].caracter = car;
 
                     fscanf(f, "%d", &cartaMax);
-                    arrayBOT[i].carta_maxima = cartaMax;
+                    arrayBots[i].carta_maxima = cartaMax;
+                    ListaCarta x  = LISTACARTA_crea();
+                    arrayBots[i].cartas = x;
                     i++;
                     fscanf(f, "%c", &aux);
                     nombre = malloc(sizeof(char) * 1024);
                     fgets(nombre, 25, f);
                     strtok(nombre, "\n");
-                    arrayBOT[i].nombre = nombre;
+                    arrayBots[i].nombre = nombre;
                 }
             }
         }
         fclose(f);
-        return arrayBOT;
 }
 int BOT_numBots(){
 
@@ -110,4 +111,10 @@ int BOT_consultaCartaMax(Bot b) {
 
 ListaCarta BOT_consultaCartas(Bot b) {
     return b.cartas;
+}
+void BOT_add_carta(Bot *bot, char carta){
+    bot->cartas = LISTACARTA_inserta(bot->cartas, carta);
+}
+ListaCarta BOT_get_cartas(Bot *bot){
+    return bot->cartas;
 }

@@ -18,7 +18,7 @@ typedef struct {
     ListaCarta cartas;
 } Bot;
 
-Bot * BOT_crea(int nBots);
+void BOT_crea(Bot *arrayBots);
 int BOT_numBots();
 void BOT_insertaNombre(Bot *b, char *nombre);
 void BOT_insertaFichas(Bot *b, int fichas);
@@ -30,4 +30,6 @@ int BOT_consultaFichas(Bot b);
 char BOT_consultaCaracter(Bot b);
 int BOT_consultaCartaMax(Bot b);
 ListaCarta BOT_consultaCartas(Bot b);
+void BOT_add_carta(Bot *bot, char carta);
+ListaCarta BOT_get_cartas(Bot *bot);
 #endif //INC_21BLACKJACK_BOTS_H

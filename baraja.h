@@ -19,6 +19,7 @@ void BARAJA_push(Baraja *b, char carta);
 int BARAJA_numeroCartas(Baraja b);
 void BARAJA_destruye(Baraja *b);
 char BARAJA_carta(Baraja *b);
+Baraja BARAJA_comprueba(Baraja *b);
 
 
 #endif //INC_21BACKJACK_BARAJA_H
