@@ -95,15 +95,7 @@ void PARTIDA_show_carta_bots(Partida *p, Bot *bot,  int t){
     ListaCarta cartas = BOT_get_cartas(&(*bot));
     cartas = LISTACARTA_vesInicio(cartas);
     fichas = BOT_consultaFichas((*bot));
-    if(bot->caracter != 'f'){
-        fichas == 900;
-    }
-    if(bot->caracter == 'n'){
-        fichas == 500;
-    }
-    if(bot->caracter == 'd'){
-        fichas == 100;
-    }
+
     printf("\nBot  %s", bot->nombre);
 
     if(t == 0){
@@ -240,13 +232,13 @@ int PARTIDA_apuesta_bots(Bot *bot){
         apuesta = 100;
     }
     while(apuesta>fichas) {
-        printf("\n%s no te prous fitxes, es realitzara la aposta minima\n", bot->nombre);
+        printf("\n!!!! %s no te prous fitxes, es realitzara la aposta maxima possible !!!! \n", bot->nombre);
         apuesta = fichas;
     }
     //Al final de cada partida, se guarda en listafichas el numero de fichas que tiene el jugador en ese momento
     fichas = fichas-apuesta;
     BOT_insertaFichas(&(*bot), fichas);
-    //printf("\nAl bot %s li queden %d fitxes\n",bot->nombre, BOT_consultaFichas((*bot)));
+    printf("\n - %s  %d fch\n",bot->nombre, apuesta);
     return apuesta;
 }
 char PARTIDA_get_nombre_jugador(Partida *p){

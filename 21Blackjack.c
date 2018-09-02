@@ -2,6 +2,7 @@
 #include "baraja.h"
 #include "partida.h"
 void mostrar_menu_jugador() {
+    printf("\n El teu torn\n");
     printf("\n Escull:\n");
     printf("\n 1. Demanar cartes");
     printf("\n 2. Plantarse");
@@ -35,11 +36,12 @@ void blackjack(Baraja b) {
 
         //Partida_carta_jugador
         //cartas repartidas, primeras apuestas
-        int apuestaJ =  PARTIDA_apuesta_jugador(&p);
+
         int *apuestaB = (int)malloc(sizeof(int) * nBots);
         for(int j = 0; j<nBots;j++) {
             apuestaB[j] = PARTIDA_apuesta_bots(&arrayBots[j]);
         }
+        int apuestaJ =  PARTIDA_apuesta_jugador(&p);
         PARTIDA_show_carta_crupier(&p, 0);
         PARTIDA_show_carta_jugador(&p, 1);
         for(int j = 0; j<nBots;j++) {
