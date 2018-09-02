@@ -32,11 +32,7 @@ void blackjack(Baraja b) {
                 carta = PARTIDA_add_carta_bots(&p, &arrayBots[j]);
             }
         }
-        PARTIDA_show_carta_crupier(&p, 0);
-        PARTIDA_show_carta_jugador(&p, 1);
-        for(int j = 0; j<nBots;j++) {
-            PARTIDA_show_carta_bots(&p, &arrayBots[j]);
-        }
+
         //Partida_carta_jugador
         //cartas repartidas, primeras apuestas
         int apuestaJ =  PARTIDA_apuesta_jugador(&p);
@@ -44,7 +40,11 @@ void blackjack(Baraja b) {
         for(int j = 0; j<nBots;j++) {
             apuestaB[j] = PARTIDA_apuesta_bots(&arrayBots[j]);
         }
-
+        PARTIDA_show_carta_crupier(&p, 0);
+        PARTIDA_show_carta_jugador(&p, 1);
+        for(int j = 0; j<nBots;j++) {
+            PARTIDA_show_carta_bots(&p, &arrayBots[j], 0);
+        }
         //apuestas realizadas, evaluacion
         printf("\n--------------------------------------\n");
         int num_cartasJ = PARTIDA_conversor_jugador(&p);

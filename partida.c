@@ -89,24 +89,46 @@ void PARTIDA_show_carta_jugador(Partida *p, int t){
         printf("\n");
     }
 }
-void PARTIDA_show_carta_bots(Partida *p, Bot *bot){
+void PARTIDA_show_carta_bots(Partida *p, Bot *bot,  int t){
     char carta;int fichas=0;int i=0;
 
     ListaCarta cartas = BOT_get_cartas(&(*bot));
     cartas = LISTACARTA_vesInicio(cartas);
+    fichas = BOT_consultaFichas((*bot));
+    if(bot->caracter != 'f'){
+        fichas == 900;
+    }
+    if(bot->caracter == 'n'){
+        fichas == 500;
+    }
+    if(bot->caracter == 'd'){
+        fichas == 100;
+    }
     printf("\nBot  %s", bot->nombre);
 
-    while(!LISTACARTA_final(cartas)){
+    if(t == 0){
         carta = LISTACARTA_consulta(cartas);
-        if(carta== '0'){
-            printf(" [1%c] ", carta);
+        if(carta== '0') {
+            printf(" [1%c]  [X] %d fch\n", carta, fichas);//oju
         }
         else{
-            printf(" [%c] ", carta);
+            printf(" [%c]  [X] %d fch\n", carta, fichas);//oju
         }
-
-        cartas = LISTACARTA_avanza(cartas);
     }
+    else{
+        while(!LISTACARTA_final(cartas)){
+            carta = LISTACARTA_consulta(cartas);
+            if(carta== '0'){
+                printf(" [1%c] ", carta);
+            }
+            else{
+                printf(" [%c] ", carta);
+            }
+
+            cartas = LISTACARTA_avanza(cartas);
+        }
+    }
+
     printf(" \n                 (%d)\n",PARTIDA_conversor_bots(p, bot));
     printf("\n");
 
@@ -276,7 +298,7 @@ void PARTIDA_turno_bots(Partida *p, Bot *arrayBots, int num_cartasC, int num_car
         if(num_cartasB > best_num_cartasB){
             best_num_cartasB = num_cartasB;
         }
-        PARTIDA_show_carta_bots(p, &arrayBots[i]);
+        PARTIDA_show_carta_bots(p, &arrayBots[i], 1);
     }
     printf("\n--------------------------------------\n");
 }
