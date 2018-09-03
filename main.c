@@ -41,6 +41,7 @@ void main() {
                 }
                 break;
             case 3:
+                Estadistica_Jugador();
                 break;
             case 4:
                 printf(" \n Adeu!! \n");

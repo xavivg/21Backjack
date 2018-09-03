@@ -34,4 +34,5 @@ void PARTIDA_carga_jugador(Partida *p);
 void PARTIDA_turno_crupier(Partida *p, int num_cartasC, int num_cartasJ);
 void PARTIDA_turno_bots(Partida *p, Bot *arrayBots, int num_cartasC, int num_cartasJ);
 void PARTIDA_comprobacion(Partida *p, Bot *arrayBots, int *apuestaB, int *num_cartasB, int num_cartasC, int num_cartasJ, int apuestaJ);
+void PARTIDA_guarda_jugador(Partida *p);
 #endif //INC_21BACKJACK_PARTIDA_H

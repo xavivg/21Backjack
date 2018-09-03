@@ -94,17 +94,16 @@ void PARTIDA_show_carta_bots(Partida *p, Bot *bot,  int t){
 
     ListaCarta cartas = BOT_get_cartas(&(*bot));
     cartas = LISTACARTA_vesInicio(cartas);
-    fichas = BOT_consultaFichas((*bot));
 
     printf("\nBot  %s", bot->nombre);
 
     if(t == 0){
         carta = LISTACARTA_consulta(cartas);
         if(carta== '0') {
-            printf(" [1%c]  [X] %d fch\n", carta, fichas);//oju
+            printf(" [1%c]  [X] \n", carta);//oju
         }
         else{
-            printf(" [%c]  [X] %d fch\n", carta, fichas);//oju
+            printf(" [%c]  [X] \n", carta);//oju
         }
     }
     else{
@@ -300,18 +299,18 @@ void PARTIDA_turno_bots(Partida *p, Bot *arrayBots, int num_cartasC, int num_car
 void PARTIDA_comprobacion(Partida *p, Bot *arrayBots, int *apuestaB, int *num_cartasB, int num_cartasC, int num_cartasJ, int apuestaJ){
     int fichas;
     printf("\n--------------------------------------\n");
-    if(num_cartasJ<=21 && num_cartasJ != num_cartasC){
+    if(num_cartasJ<=21 && num_cartasJ != num_cartasC && num_cartasJ > num_cartasC){
         if(num_cartasJ==21){
             printf("\n%s, Has conseguit guanyar!! 21 BLACKJACK!!!\n", p->jugador.nombre);
             p->jugador.manos_ganadas++;
             fichas =  LISTAFICHAS_consulta(p->jugador.fichas_partida) + (apuestaJ*3);
-            printf("\n Has guanyat %d fitxes\n",apuestaJ);
-            printf("\n%s, Has conseguit guanyar!! 21 BLACKJACK!!!\n",fichas);
+            printf("\n Has guanyat %d fitxes\n",apuestaJ*3);
+           // printf("\n%s, Has conseguit guanyar!! 21 BLACKJACK!!!\n",fichas);
         }else{
             printf("\n%s, Has conseguit guanyar!!", p->jugador.nombre);
-            printf("\n Has guanyat %d fitxes\n",apuestaJ);
-            p->jugador.manos_ganadas++;
             fichas =  LISTAFICHAS_consulta(p->jugador.fichas_partida) + (apuestaJ*2);
+            printf("\n Has guanyat %d fitxes\n",apuestaJ*2);
+            p->jugador.manos_ganadas++;
         }
     }
     else if(num_cartasJ<21 && num_cartasJ == num_cartasC){
@@ -333,36 +332,63 @@ void PARTIDA_comprobacion(Partida *p, Bot *arrayBots, int *apuestaB, int *num_ca
 
     for (int i = 0; i < p->nBots; ++i) {
         printf("\n--------------------------------------\n");
-        if(num_cartasB[i]<=21 && num_cartasB[i] != num_cartasC){
+        if(num_cartasB[i]<=21 && num_cartasB[i] != num_cartasC && num_cartasB[i] > num_cartasC){
             if(num_cartasB[i]==21){
                 printf("\n%s, Has conseguit guanyar!! 21 BLACKJACK!!!\n", arrayBots[i].nombre);
                 //p->jugador.manos_ganadas++;
-                fichas =  arrayBots[i].fichas + (apuestaJ*3);
-                printf("\n Has guanyat %d fitxes\n",apuestaJ);
-                printf("\n%s, Has conseguit guanyar!! 21 BLACKJACK!!!\n",fichas);
+                fichas =  arrayBots[i].fichas + (apuestaB[i]*3);
+                printf("\n Has guanyat %d fitxes\n",apuestaB[i]*3);
+               // printf("\n%s, Has conseguit guanyar!! 21 BLACKJACK!!!\n",fichas);
             }else{
                 printf("\n%s, Has conseguit guanyar!!", arrayBots[i].nombre);
-                printf("\n Has guanyat %d fitxes\n",apuestaJ);
-                fichas =  arrayBots[i].fichas + (apuestaJ*2);
+                fichas =  arrayBots[i].fichas + (apuestaB[i]*2);
+                printf("\n Has guanyat %d fitxes\n",apuestaB[i]*2);
             }
         }
         else if(num_cartasB[i]<21 && num_cartasB[i] == num_cartasC){
             printf("%s, Has empatat amb el Crupier!", arrayBots[i].nombre);
-            printf("\n Has recuperat %d fitxes\n",apuestaJ);
-            //fichas =  LISTAFICHAS_consulta(p->jugador.fichas_partida) + apuestaJ;
+            printf("\n Has recuperat %d fitxes\n",apuestaB[i]);
+            fichas =  arrayBots[i].fichas;
         }
         else{
             printf("%s, Has perdut la partida!", arrayBots[i].nombre);
-            printf("\n Has perdut %d fitxes\n",apuestaJ);
-            //fichas =  LISTAFICHAS_consulta(p->jugador.fichas_partida) - apuestaJ;
+            printf("\n Has perdut %d fitxes\n",apuestaB[i]);
+            fichas = arrayBots[i].fichas - apuestaJ;
         }
+
         printf("\n T'has quedat amb %d fitxes\n", fichas);
-        arrayBots[i].fichas = fichas;
-        //ListaFichas x = LISTAFICHAS_inserta(p->jugador.fichas_partida, fichas);
-        p->jugador.fichas_partida = x;
 
     }
 
 
     printf("\n--------------------------------------\n");
+}
+void PARTIDA_guarda_jugador(Partida *p){
+    FILE *fi;
+    fi = fopen("fichero_usuario.bj","w");
+    if (fi==NULL){
+        printf("ERROR.");
+    }else {
+        char aux;
+        fprintf(fi,"%s\n", p->jugador.nombre);
+        fprintf(fi,"%i\n", p->jugador.fichas);
+        fprintf(fi,"%i\n", p->jugador.manos_ganadas);
+        fprintf(fi,"%i\n", p->jugador.manos_empatadas);
+        fprintf(fi,"%i\n", p->jugador.manos_empatadas);
+
+
+        int partidas = p->jugador.manos_ganadas + p->jugador.manos_perdidas + p->jugador.manos_empatadas;
+        int fichas_partida;
+
+        ListaFichas a = p->jugador.fichas_partida;
+        a = LISTAFICHAS_vesInicio(a);
+        for (int i = 0; i < partidas; i++) {
+            fprintf(fi,"%i\n", LISTAFICHAS_consulta(a));
+            a = LISTAFICHAS_avanza(a);
+        }
+    }
+    fclose(fi);
+}
+PARTIDA_guarda_bots(){
+
 }
